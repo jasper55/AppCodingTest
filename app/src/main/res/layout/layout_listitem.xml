@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:contentPadding="15dp"
+    android:background="?attr/selectableItemBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <TextView
+            android:id="@+id/tv_houseName"
+            android:layout_weight="8"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="item1"
+            android:textStyle="bold"
+            android:paddingLeft="15dp"/>
+
+        <ImageView
+            android:id="@+id/iv_twitter_ic"
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:layout_height="25dp"
+            android:src="@drawable/info_icon"/>
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>
