@@ -25,7 +25,7 @@
             android:paddingLeft="15dp"/>
 
         <ImageView
-            android:id="@+id/iv_twitter_ic"
+            android:id="@+id/iv_infoIcon"
             android:layout_weight="2"
             android:layout_width="0dp"
             android:layout_height="25dp"

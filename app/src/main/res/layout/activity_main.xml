@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text=""
-        android:id="@+id/tv"
+        android:id="@+id/tvBottomDisplaySelectedName"
         android:paddingLeft="10dp"
         android:paddingBottom="5dp"
         android:layout_alignParentBottom="true"

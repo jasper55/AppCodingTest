@@ -21,13 +21,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public class ViewHolderKlasse extends RecyclerView.ViewHolder{
 
-        TextView itemTextView;
-        ImageView itemImageView;
+        TextView tvHouseName;
+        ImageView ivInfoIcon;
 
         public ViewHolderKlasse(View itemView) {
             super(itemView);
-            itemTextView = (TextView) itemView.findViewById(R.id.tv_houseName);
-            itemImageView = (ImageView) itemView.findViewById(R.id.iv_twitter_ic);
+            tvHouseName = (TextView) itemView.findViewById(R.id.tv_houseName);
+            ivInfoIcon = (ImageView) itemView.findViewById(R.id.iv_infoIcon);
         }
     }
 
@@ -40,30 +40,30 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(final ViewHolderKlasse viewHolderKlasse, final int i) {
 
-        viewHolderKlasse.itemTextView.setText(MainActivity.itemNames.get(i));
+        viewHolderKlasse.tvHouseName.setText(MainActivity.itemNamesArray.get(i));
         viewHolderKlasse.itemView.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                    MainActivity.tv1.setText(MainActivity.itemNames.get(i));
+                    MainActivity.tvBottomDisplaySelectedName.setText(MainActivity.itemNamesArray.get(i));
                     rowIndex = i;
                     notifyDataSetChanged();
             }
         });
 
         if(rowIndex==i){
-            viewHolderKlasse.itemImageView.setVisibility(View.VISIBLE);
+            viewHolderKlasse.ivInfoIcon.setVisibility(View.VISIBLE);
             viewHolderKlasse.itemView.setBackgroundColor(Color.parseColor("#838487"));
-            viewHolderKlasse.itemTextView.setTextColor(Color.parseColor("#FFFFFF"));
+            viewHolderKlasse.tvHouseName.setTextColor(Color.parseColor("#FFFFFF"));
 
-            viewHolderKlasse.itemImageView.setOnClickListener(new View.OnClickListener() {
+            viewHolderKlasse.ivInfoIcon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.i("onClick: ",MainActivity.itemNames.get(i));
+                    Log.i("onClick: ",MainActivity.itemNamesArray.get(i));
                     try {
-                        Log.i("json: ",MainActivity.data.getJSONObject(i).toString());
-                        JSONObject jsonObject = MainActivity.data.getJSONObject(i);
-                        showDetailViewForEdit(jsonObject,context.getApplicationContext());
+                        Log.i("json: ",MainActivity.JSONDataArray.getJSONObject(i).toString());
+                        JSONObject jsonObject = MainActivity.JSONDataArray.getJSONObject(i);
+                        showDetailView(jsonObject,context.getApplicationContext());
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -72,19 +72,19 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }
         else
         {
-            viewHolderKlasse.itemImageView.setVisibility(View.INVISIBLE);
+            viewHolderKlasse.ivInfoIcon.setVisibility(View.INVISIBLE);
             viewHolderKlasse.itemView.setBackgroundColor(Color.parseColor("#FFFFFF"));
-            viewHolderKlasse.itemTextView.setTextColor(Color.parseColor("#9b9b9b"));
+            viewHolderKlasse.tvHouseName.setTextColor(Color.parseColor("#9b9b9b"));
         }
 
     }
 
     @Override
     public int getItemCount() {
-        return MainActivity.itemNames.size();
+        return MainActivity.itemNamesArray.size();
     }
 
-    private void showDetailViewForEdit(JSONObject jsonObject, Context context) {
+    private void showDetailView(JSONObject jsonObject, Context context) {
         Intent detailviewIntent = new Intent(context.getApplicationContext(),DetailviewActivity.class);
         detailviewIntent.setClass(context.getApplicationContext(), DetailviewActivity.class);
         try {
